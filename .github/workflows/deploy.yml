@@ -1,17 +1,12 @@
 name: Build & Deploy Docs
 
 on:
-  # Rebuild when the documentation repo changes.
   push:
     branches: [ main ]
-  # Allow manual runs from the Actions tab.
   workflow_dispatch:
-  # Let the MUES-Core repo trigger a rebuild via a repository_dispatch event
-  # (event type "docs-rebuild"). Optional — see README for setup.
   repository_dispatch:
     types: [ docs-rebuild ]
 
-# A single deployment at a time.
 concurrency:
   group: docs-deploy
   cancel-in-progress: true
@@ -28,8 +23,6 @@ jobs:
         with:
           repository: j0nes-L/MUES-Core
           ref: main
-          # Required only if MUES-Core is private. Create a fine-grained PAT with
-          # "Contents: read" on MUES-Core and store it as the secret MUES_CORE_TOKEN.
           token: ${{ secrets.MUES_CORE_TOKEN }}
           path: _source/MUES-Core
 
@@ -37,6 +30,19 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '9.0.x'
+
+      - name: Cache dotnet tools
+        uses: actions/cache@v4
+        with:
+          path: ~/.dotnet/tools
+          key: dotnet-tools-docfx-${{ runner.os }}
+
+      - name: Cache NuGet packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.nuget/packages
+          key: nuget-${{ runner.os }}-${{ hashFiles('_source/MUES-Core/**/*.csproj') }}
+          restore-keys: nuget-${{ runner.os }}-
 
       - name: Install DocFX
         run: dotnet tool update -g docfx

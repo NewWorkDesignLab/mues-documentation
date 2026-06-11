@@ -1,26 +1,20 @@
 # Getting Started
 
-> [!NOTE]
-> This page is a starting template. Replace the snippets below with real usage
-> examples from MUES.
+This guide walks you through setting up a MUES session after [installing the package](installation.md).
 
-After [installing the package](installation.md), you can start using MUES in your
-scripts.
+## Overview
 
-## A first example
+A MUES session consists of two roles:
 
-```csharp
-using UnityEngine;
-// using MUES; // adjust to the package's root namespace
+- **Local host** — a physical-space user with a Meta headset who scans the room via MRUK.
+- **Remote client** — a user who joins the session and sees a digital twin of the scanned room.
 
-public class Example : MonoBehaviour
-{
-    private void Start()
-    {
-        // Show a minimal, runnable example of the package's main entry point here.
-    }
-}
-```
+## Setup
+
+1. Complete the [Installation](installation.md) steps, including the Fusion Network Config and layer setup.
+2. Add `MUES-Core.Runtime` to the **Assemblies to Weave** list in your Fusion Network Config.
+3. Place the MUES session prefab in your scene (see the API Reference for available entry points).
+4. Assign any avatar or loading-screen objects the `MUES_RenderWhileLoading` layer so they remain visible during room sync.
 
 ## Where to go next
 

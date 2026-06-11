@@ -1,22 +1,25 @@
 # Introduction
 
+**MUES-Core** is a modular Unity package that enables seamless mixed-reality sessions between on-site and remote teams. It synchronizes physical and virtual spaces to create a shared spatial context.
+
 > [!NOTE]
-> This page is a starting template. Replace the content with a real overview of MUES.
+> This project is still a Work in Progress. If you encounter bugs, feel free to open an issue!
 
-**MUES** is a Unity package. This documentation site is built with
-[DocFX](https://dotnet.github.io/docfx/) and is published automatically from the
-source code in [MUES-Core](https://github.com/j0nes-L/MUES-Core).
+## How it Works
 
-## What is MUES?
+1. **Scan:** The local host scans their physical room using the **Meta MR Utility Kit (MRUK)**.
+2. **Sync:** Geometry data is serialized and distributed at runtime to remote clients via **Photon Fusion**.
+3. **Interact:** Remote users appear in an abstract digital twin of the real room. This ensures precise alignment between the remote user's virtual position and the local user's physical Passthrough view.
 
-Describe the purpose of the package here — what problem it solves, the main systems
-it provides, and who it is for.
+## Tech Stack
 
-## Feature overview
+| Layer | Technology |
+|---|---|
+| Networking | Photon Fusion (State Transfer) |
+| Audio | Photon Voice (VoIP) |
+| Spatial Computing | Meta MR Utility Kit (MRUK) |
 
-- Feature one
-- Feature two
-- Feature three
+> Future plans include implementing AI-based reconstruction for photorealistic environment sharing.
 
 ## Next steps
 

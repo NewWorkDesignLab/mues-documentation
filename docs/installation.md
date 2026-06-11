@@ -3,36 +3,35 @@
 MUES is distributed as a Unity package from the
 [MUES-Core](https://github.com/j0nes-L/MUES-Core) repository.
 
+## Requirements
+
+Before installing, make sure the following packages are present in your Unity project:
+
+- **Meta All-in-One SDK** *(v.83)*
+- **GLTFast** — `com.unity.cloud.gltfast`
+- **Photon Fusion**
+- **Photon Voice**
+
+Both URP and BRP are supported.
+
 ## Install via Git URL (Package Manager)
 
 1. Open **Window → Package Manager** in Unity.
 2. Click the **+** button and choose **Add package from git URL…**.
-3. Enter the repository URL:
+3. Enter:
 
    ```
-   https://github.com/j0nes-L/MUES-Core.git
+   https://github.com/j0nes-l/MUES-Core.git?path=/package
    ```
 
 4. Click **Add**. Unity will download and import the package.
 
-## Install via manifest.json
+## Post-Install Configuration
 
-Add the following entry to your project's `Packages/manifest.json`:
+### Fusion Network Config
 
-```json
-{
-  "dependencies": {
-    "org.nwdl.mues": "https://github.com/j0nes-L/MUES-Core.git"
-  }
-}
-```
+Add `MUES-Core.Runtime` under **Assemblies to Weave** in the **Fusion Network Config**.
 
-> [!TIP]
-> Replace `org.nwdl.mues` with the actual package name from the package's
-> `package.json`, and pin a specific version or commit with `#<tag-or-commit>`
-> for reproducible builds.
+### Render While Loading Layer
 
-## Requirements
-
-- Unity version: _document the minimum supported version here._
-- Dependencies: _list any required packages here._
+If you want your avatar or other objects to be visible during loading, assign them the `MUES_RenderWhileLoading` layer.

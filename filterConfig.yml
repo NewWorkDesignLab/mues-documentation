@@ -1,0 +1,16 @@
+# DocFX rules to control which API members appear in the generated reference.
+# See: https://dotnet.github.io/docfx/docs/dotnet-api-docs.html#filter-apis
+apiRules:
+  # Hide compiler-generated and internal/private members by default.
+  - exclude:
+      hasAttribute:
+        uid: System.ComponentModel.EditorBrowsableAttribute
+        ctorArguments:
+          - System.ComponentModel.EditorBrowsableState.Never
+  - exclude:
+      uidRegex: ^System\.Object$
+  # Exclude common Unity/test noise namespaces (adjust as needed).
+  - exclude:
+      uidRegex: \.Tests($|\.)
+  - exclude:
+      uidRegex: \.Internal($|\.)

@@ -1,0 +1,18 @@
+# DocFX build output
+_site/
+
+# Cloned package source (fetched during build)
+_source/
+
+# DocFX / .NET intermediates
+obj/
+bin/
+api/.manifest
+log.txt
+
+# Vercel
+.vercel/
+
+# OS / editor
+.DS_Store
+Thumbs.db

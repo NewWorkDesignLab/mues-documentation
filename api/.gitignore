@@ -1,0 +1,5 @@
+# Generated API metadata (created by `docfx metadata`)
+*.yml
+!index.md
+# keep this file
+!.gitignore

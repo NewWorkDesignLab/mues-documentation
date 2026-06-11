@@ -1,0 +1,75 @@
+{
+  "$schema": "https://raw.githubusercontent.com/dotnet/docfx/main/schemas/docfx.schema.json",
+  "metadata": [
+    {
+      "src": [
+        {
+          "src": "_source/MUES-Core",
+          "files": [ "**/*.cs" ],
+          "exclude": [
+            "**/Tests/**",
+            "**/*.Tests/**",
+            "**/Editor/**/*Tests*.cs",
+            "**/obj/**",
+            "**/bin/**",
+            "**/Library/**",
+            "**/Temp/**"
+          ]
+        }
+      ],
+      "dest": "api",
+      "outputFormat": "mref",
+      "properties": {
+        "TargetFramework": "netstandard2.1"
+      },
+      "disableGitFeatures": false,
+      "disableDefaultFilter": false,
+      "filter": "filterConfig.yml",
+      "allowCompilationErrors": true
+    }
+  ],
+  "build": {
+    "content": [
+      {
+        "files": [ "api/**.yml", "api/index.md" ]
+      },
+      {
+        "files": [ "**/*.{md,yml}" ],
+        "exclude": [
+          "_site/**",
+          "_source/**",
+          "obj/**",
+          "**/bin/**",
+          "api/**",
+          ".github/**",
+          "filterConfig.yml",
+          "docfx.json",
+          "README.md"
+        ]
+      }
+    ],
+    "resource": [
+      {
+        "files": [ "images/**", "favicon.ico", "logo.svg" ]
+      }
+    ],
+    "output": "_site",
+    "template": [ "default", "modern" ],
+    "globalMetadata": {
+      "_appName": "MUES",
+      "_appTitle": "MUES Documentation",
+      "_appFooter": "MUES-Core &copy; NWDL",
+      "_enableSearch": true,
+      "_disableContribution": false,
+      "_gitContribute": {
+        "repo": "https://github.com/j0nes-L/MUES-Core",
+        "branch": "main"
+      }
+    },
+    "globalMetadataFiles": [],
+    "fileMetadataFiles": [],
+    "postProcessors": [ "ExtractSearchIndex" ],
+    "keepFileLink": false,
+    "disableGitFeatures": false
+  }
+}
